@@ -26,6 +26,9 @@ body { margin: 0; font-family: var(--site-font-body); background: var(--site-bac
 .hero { background: var(--site-primary); color: var(--site-on-primary); padding: calc(30px * var(--site-spacing-scale)) max(5vw,20px) calc(26px * var(--site-spacing-scale)); position: relative; overflow: hidden; }
 .hero:after { content:""; position:absolute; width:340px; height:340px; border:1px solid rgba(255,255,255,.16); border-radius:50%; left:-110px; top:-190px; opacity:var(--site-decoration-opacity); pointer-events:none; }
 .wrap { max-width: 1180px; margin: auto; }
+.hero-layout { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(250px,.65fr); gap:28px; align-items:center; }
+.hero-board { width:100%; max-width:390px; justify-self:end; display:block; border-radius:18px; border:1px solid rgba(255,255,255,.28); box-shadow:0 16px 38px rgba(0,0,0,.24); background:#fff; }
+@media(max-width:700px) { .hero-layout { grid-template-columns:1fr; } .hero-board { max-width:320px; justify-self:center; margin-top:18px; } }
 .eyebrow { font-size: .82rem; opacity:.78; letter-spacing:.04em; }
 h1,h2,h3 { font-family:var(--site-font-heading); line-height:1.45; }
 h1 { font-size:calc(2rem * var(--site-heading-scale)); margin:.35rem 0; }
@@ -90,7 +93,8 @@ footer { text-align:center; color:light-dark(#6b8089,#9fb2bc); font-size:.8rem; 
 <body>
 <div id="app">
 <header class="hero">
-  <div class="wrap">
+  <div class="wrap hero-layout">
+    <div class="hero-copy">
     <div class="topline"><span class="eyebrow">دفتر فنی و گزارش پیشرفت</span><span class="pill">● وضعیت کلی: در حال توسعه</span></div>
     <h1>پروژه موبایل با Tang Primer 25K</h1>
     <p>داشبورد تصمیم‌ها، قطعات، معماری سخت‌افزار، آزمایش‌ها و گام‌های بعدی</p>
@@ -98,6 +102,8 @@ footer { text-align:center; color:light-dark(#6b8089,#9fb2bc); font-size:.8rem; 
       <a class="active" href="index.html">پروژه موبایل</a>
       <a href="hermes.html">Hermes</a>
     </nav>
+    </div>
+    <img class="hero-board" src="https://en.wiki.sipeed.com/hardware/en/tang/tang-primer-25k/assets/25k_dock_45.jpg" alt="برد Sipeed Tang Primer 25K روی Dock" loading="eager">
   </div>
 </header>
 <main>
