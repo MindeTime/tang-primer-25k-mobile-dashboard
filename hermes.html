@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>راهنمای Hermes | پروژه موبایل Tang Primer 25K</title>
+<style>
+:root{--navy:#123c52;--bg:#eef3f5;--ink:#172b35;--muted:#617680;--line:#d9e3e8;--green:#dff5ec;--greenink:#126348;--amber:#fff2d8;--amberink:#855400}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Tahoma,Arial,sans-serif;line-height:1.9}
+.hero{background:var(--navy);color:#fff;padding:26px max(5vw,18px)}.wrap{max-width:1120px;margin:auto}h1{margin:8px 0;font-size:2rem}h2{font-size:1.35rem;margin:0 0 12px}h3{font-size:1.05rem;margin:18px 0 6px}.muted{color:var(--muted);font-size:.9rem}.hero .muted{color:#d6e3e9}
+nav{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}nav a{color:#fff;text-decoration:none;border:1px solid #ffffff80;border-radius:999px;padding:5px 15px}nav a.active,nav a:hover{background:#ffffff25}
+main{max-width:1120px;margin:auto;padding:22px 16px 50px}.layout{display:grid;grid-template-columns:250px 1fr;gap:18px;align-items:start}.card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:18px;margin-bottom:16px;box-shadow:0 5px 18px #0a23300a}
+.toc{position:sticky;top:14px}.toc a{display:block;padding:5px 0;color:#175b73;text-decoration:none;font-size:.9rem}.toc a:hover{text-decoration:underline}
+.callout{border-radius:12px;padding:13px 15px;margin:12px 0;background:#e5f1f5}.warning{background:var(--amber);color:var(--amberink)}.success{background:var(--green);color:var(--greenink)}
+code,pre{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;direction:ltr;text-align:left}code{background:#edf2f4;padding:2px 5px;border-radius:5px;color:#17465b}pre{background:#132630;color:#e8f2f5;padding:14px;border-radius:10px;overflow:auto;white-space:pre-wrap;word-break:break-word;font-size:.88rem}
+a{color:#12617b}.tag{display:inline-block;border-radius:7px;background:#e7f0f4;padding:2px 8px;font-size:.78rem;margin:2px}
+table{width:100%;border-collapse:collapse}td,th{text-align:right;padding:9px;border-bottom:1px solid var(--line);vertical-align:top}th{color:#526b76}
+footer{text-align:center;color:var(--muted);font-size:.8rem;padding:20px}
+@media(max-width:780px){.layout{grid-template-columns:1fr}.toc{position:static}.toc nav{display:grid;grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<div class="muted">راهنمای عملیاتی و آموزشی</div>
+<h1>Hermes Agent</h1>
+<p>راهنمای استفاده از عامل هوشمند Hermes برای تحقیق، ممیزی فنی و پیشبرد کنترل‌شده پروژه Tang Primer 25K</p>
+<nav><a href="index.html">پروژه موبایل</a><a class="active" href="hermes.html">Hermes</a></nav>
+</div></header>
+<main class="wrap">
+<div class="layout">
+<aside class="card toc"><b>فهرست مطالب</b>
+<a href="#intro">۱. آشنایی با Hermes</a><a href="#local">۲. محیط فعلی شما</a><a href="#start">۳. شروع و بررسی سلامت</a><a href="#model">۴. مدل و اتصال API</a><a href="#workflow">۵. گردش‌کار ممیزی</a><a href="#prompt">۶. نوشتن مأموریت خوب</a><a href="#fpga">۷. قالب مأموریت FPGA</a><a href="#reports">۸. گزارش و معیار پذیرش</a><a href="#safety">۹. قوانین ایمنی پروژه</a><a href="#trouble">۱۰. عیب‌یابی</a><a href="#learn">۱۱. مسیر یادگیری</a><a href="#links">۱۲. منابع رسمی</a>
+</aside>
+<div>
+<section class="card" id="intro"><h2>۱. آشنایی با Hermes</h2>
+<p>Hermes Agent یک عامل هوش مصنوعی قابل اجرا در محیط خط فرمان است. برخلاف یک گفت‌وگوی ساده، می‌تواند با ابزارهای مجاز کار کند، فایل‌ها را بررسی کند، فرمان اجرا کند و نتیجه یک مأموریت چندمرحله‌ای را به شکل گزارش تحویل دهد.</p>
+<div class="callout success"><b>کاربرد اصلی در این پروژه</b>سپردن بررسی‌های فنی مستقل به Hermes؛ مانند ممیزی کد LiteX، تحلیل گزارش سنتز، بررسی پین‌ها، ارزیابی محدودیت‌های منابع و تهیه گزارش قابل بازبینی.</div>
+<p>Hermes یک کمک‌تحلیل‌گر است، نه مرجع نهایی تأیید سخت‌افزار. هر نتیجه مهم باید با شواهد، فایل خروجی و در صورت لزوم بررسی مستقل تأیید شود.</p></section>
+
+<section class="card" id="local"><h2>۲. محیط فعلی Hermes در سیستم شما</h2>
+<table><tr><th>مورد</th><th>مقدار ثبت‌شده</th></tr>
+<tr><td>سیستم‌عامل</td><td>Ubuntu 24.04.2</td></tr>
+<tr><td>محل محیط Hermes</td><td><code>~/.hermes</code></td></tr>
+<tr><td>نسخه Python محیط Hermes</td><td>3.14.7</td></tr>
+<tr><td>Endpoint ثبت‌شده</td><td><code>https://cloudllm.partcorp.ir/v1</code></td></tr>
+<tr><td>مدل ثبت‌شده</td><td><code>deepseek-v4.1-flash-openrouter</code></td></tr></table>
+<div class="callout warning"><b>توجه</b>این‌ها مقادیر ثبت‌شده از تنظیمات قبلی هستند و لزوماً وضعیت لحظه‌ای سیستم را نشان نمی‌دهند. قبل از هر تغییر، تنظیمات واقعی را فقط‌خواندنی بررسی کنید. کلید API یا رمزها را در گزارش، اسکرین‌شات یا مخزن GitHub قرار ندهید.</div></section>
+
+<section class="card" id="start"><h2>۳. شروع و بررسی سلامت</h2>
+<p>فرمان‌های پایه را در ترمینال اجرا کنید. این فرمان‌ها برای مشاهده وضعیت‌اند و نباید پروژه FPGA را تغییر دهند.</p>
+<pre>hermes --help
+hermes doctor
+hermes model
+hermes tools</pre>
+<ul><li><code>hermes --help</code>: نمایش فرمان‌ها و گزینه‌های موجود در نسخه نصب‌شده.</li>
+<li><code>hermes doctor</code>: بررسی سلامت نصب و وابستگی‌ها.</li>
+<li><code>hermes model</code>: مشاهده یا پیکربندی ارائه‌دهنده و مدل؛ بدون شناخت تنظیمات فعلی، گزینه‌ها را تغییر ندهید.</li>
+<li><code>hermes tools</code>: بررسی ابزارهای فعال و مجوزهای آن‌ها.</li></ul>
+<p>برای شروع گفت‌وگو، فرمان <code>hermes</code> را اجرا کنید. برای جزئیات فرمان‌های نسخه جاری، خروجی <code>hermes --help</code> و مستندات رسمی را ملاک قرار دهید؛ نام گزینه‌ها ممکن است با نسخه‌ها تغییر کند.</p></section>
+
+<section class="card" id="model"><h2>۴. مدل و اتصال API</h2>
+<p>Hermes برای پاسخ‌گویی به یک provider و مدل نیاز دارد. در تنظیمات فعلی پروژه، یک endpoint سازگار با API و نام مدل اختصاصی ثبت شده است.</p>
+<h3>چک‌لیست اتصال</h3><ol><li>آدرس endpoint باید شامل مسیر پایه درست باشد؛ برای تنظیم فعلی مقدار ثبت‌شده <code>/v1</code> است.</li><li>نام مدل باید دقیقاً با نامی که سرویس‌دهنده ارائه می‌کند مطابقت داشته باشد.</li><li>کلید API باید در محل امن تنظیمات محلی قرار گیرد؛ آن را در متن مأموریت وارد نکنید.</li><li>ابتدا یک پیام کوتاه آزمایشی بفرستید و پاسخ را بررسی کنید.</li><li>اگر خطا رخ داد، زمان، متن خطا و کد HTTP را بدون افشای کلید ثبت کنید.</li></ol>
+<div class="callout warning">این صفحه عمداً فرمانی برای بازنویسی فایل پیکربندی یا تعویض provider ارائه نمی‌کند. ابتدا از تنظیمات موجود نسخه پشتیبان بگیرید و فقط با اجازه صریح، تنظیمات را تغییر دهید.</div></section>
+
+<section class="card" id="workflow"><h2>۵. گردش‌کار استاندارد برای هر مأموریت</h2>
+<ol><li><b>تعریف هدف:</b> دقیقاً مشخص کنید چه چیزی باید بررسی شود و خروجی مورد انتظار چیست.</li><li><b>تعیین محدوده:</b> مسیر پروژه، فایل‌های مجاز و فایل‌های ممنوع را مشخص کنید.</li><li><b>حالت فقط‌خواندنی:</b> ابتدا ساختار و شواهد را جمع‌آوری کند؛ هیچ تغییری ندهد.</li><li><b>تحلیل:</b> فرضیه‌ها، وابستگی‌ها، محدودیت‌ها و موارد نامطمئن را بررسی کند.</li><li><b>آزمایش مستقل:</b> اگر لازم است، آزمایش را در پوشه جدید و جداگانه انجام دهد.</li><li><b>گزارش:</b> نتیجه، شواهد، فرمان‌ها، فایل‌های تولیدشده و محدودیت‌ها را تحویل دهد.</li><li><b>بازبینی:</b> شما گزارش را بررسی کنید؛ هرگونه تغییر یا پروگرام سخت‌افزار نیازمند اجازه جداگانه است.</li></ol></section>
+
+<section class="card" id="prompt"><h2>۶. چطور مأموریت دقیق بنویسیم؟</h2>
+<p>یک مأموریت خوب باید هدف، محدوده، محدودیت، روش و قالب تحویل را روشن کند.</p>
+<table><tr><th>بخش</th><th>نمونه</th></tr><tr><td>هدف</td><td>ممیزی مسیر DMA در USB OHCI</td></tr><tr><td>محدوده</td><td>فقط کپی مستقل پروژه در مسیر تعیین‌شده</td></tr><tr><td>ممنوعیت</td><td>عدم تغییر فایل‌های اصلی و عدم پروگرام FPGA</td></tr><tr><td>روش</td><td>بررسی کد، اجرای شبیه‌سازی و ثبت لاگ</td></tr><tr><td>تحویل</td><td>گزارش Markdown، شواهد، فهرست فایل‌های تغییرکرده و نتیجه تست</td></tr></table>
+<h3>عبارت‌های دقیق و مفید</h3><ul><li>«ابتدا فقط بررسی کن؛ هیچ فایلی را تغییر نده.»</li><li>«اگر برای ادامه نیاز به تغییر داری، متوقف شو و پیشنهاد تغییر را گزارش کن.»</li><li>«هیچ نتیجه‌ای را بدون لاگ یا شاهد PASS اعلام نکن.»</li><li>«موارد تأییدنشده را صریحاً با وضعیت UNKNOWN مشخص کن.»</li><li>«آزمایش را فقط در مسیر جدید و مستقل انجام بده.»</li></ul></section>
+
+<section class="card" id="fpga"><h2>۷. قالب آماده مأموریت برای Tang Primer 25K</h2>
+<p>متن زیر را برای هر ممیزی کپی و بخش‌های داخل کروشه را تکمیل کنید:</p>
+<pre>عنوان: [نام ممیزی]
+
+هدف:
+[سؤال فنی مشخصی که باید پاسخ داده شود]
+
+برد و محیط:
+Sipeed Tang Primer 25K / GW5A-25A
+LiteX در محیط موجود سیستم
+
+محدوده مجاز:
+فقط فایل‌ها و مسیرهای مرتبط با این ممیزی را بخوان.
+برای هر آزمایش جدید، یک پوشه مستقل زیر
+~/litex_work/PRJ/ ایجاد کن.
+
+ممنوعیت‌ها:
+- هیچ پروژه قدیمی را تغییر نده.
+- به Flash دست نزن.
+- FPGA را پروگرام نکن.
+- هیچ فایل اصلی یا تنظیمات سراسری را تغییر نده.
+- اگر تغییر کد لازم است، ابتدا متوقف شو و طرح تغییر را گزارش کن.
+
+روش:
+1) ابتدا ساختار و نسخه فایل‌ها را ثبت کن.
+2) فرضیه‌ها و وابستگی‌ها را مشخص کن.
+3) تست مستقل و قابل تکرار طراحی کن.
+4) فرمان‌ها و خروجی کامل تست را ذخیره کن.
+5) نتیجه را با شواهد ارزیابی کن.
+
+قالب گزارش:
+- خلاصه نتیجه
+- وضعیت GREEN / YELLOW / RED
+- فایل‌ها و نسخه‌های بررسی‌شده
+- روش و فرمان‌های اجراشده
+- تعداد PASS / FAIL / SKIP
+- خطاها و محدودیت‌ها
+- فایل‌های تولیدشده و مسیرشان
+- پیشنهاد گام بعدی
+
+در پایان هیچ تغییری را بدون تأیید من اعمال نکن.</pre>
+<div class="callout success"><b>یادآوری مخصوص پروژه</b>مسیر آزمایش‌ها باید زیر <code>~/litex_work/PRJ/</code> و مستقل باشد. پروژه‌های قدیمی LiteX دست‌نخورده می‌مانند.</div></section>
+
+<section class="card" id="reports"><h2>۸. استاندارد گزارش و معیار پذیرش</h2>
+<table><tr><th>وضعیت</th><th>معنا</th><th>چه زمانی استفاده شود؟</th></tr>
+<tr><td><span class="tag" style="background:#dff5ec">GREEN</span></td><td>قبول با شواهد کافی</td><td>همه معیارهای تعریف‌شده پاس شده و لاگ قابل بازبینی وجود دارد.</td></tr>
+<tr><td><span class="tag" style="background:#fff2d8">YELLOW</span></td><td>نتیجه ناقص یا مشروط</td><td>برخی تست‌ها انجام نشده، ابهام باقی مانده یا نتیجه فقط شبیه‌سازی است.</td></tr>
+<tr><td><span class="tag" style="background:#ffe5e2">RED</span></td><td>شکست یا مانع جدی</td><td>معیار مهمی شکست خورده یا ریسک حل‌نشده وجود دارد.</td></tr></table>
+<p>گزارش باید تفاوت شبیه‌سازی، سنتز، تحلیل زمان‌بندی و آزمایش روی برد واقعی را حفظ کند. PASS در شبیه‌سازی به معنی تأیید سخت‌افزار واقعی نیست.</p></section>
+
+<section class="card" id="safety"><h2>۹. قوانین ایمنی و کنترل تغییرات</h2>
+<ul><li>پروژه‌های قدیمی LiteX هرگز تغییر نکنند؛ آزمایش جدید فقط در پوشه مستقل <code>~/litex_work/PRJ/...</code>.</li><li>هیچ برنامه‌ریزی FPGA، حتی SRAM، بدون اجازه صریح کاربر انجام نشود.</li><li>Flash تحت هیچ شرایطی بدون مجوز جداگانه لمس نشود.</li><li>قبل از هر تغییر، فایل هدف، دلیل تغییر، روش بازگشت و اثر احتمالی گزارش شود.</li><li>هیچ credential، API key، token یا رمز عبوری در GitHub یا گزارش عمومی ثبت نشود.</li><li>قطعات انتخاب‌شده، سفارش‌داده‌شده، دریافت‌شده، نصب‌شده و آزمایش‌شده وضعیت‌های متفاوت‌اند.</li><li>درصد پروژه فقط با پیشرفت واقعی و قابل تأیید تغییر کند.</li></ul>
+<div class="callout warning"><b>قانون توقف</b>اگر مأموریت مبهم است، به Flash یا پروگرام سخت‌افزار نیاز پیدا می‌کند، یا احتمال تغییر پروژه قدیمی وجود دارد، Hermes باید متوقف شود و قبل از اقدام اجازه بگیرد.</div></section>
+
+<section class="card" id="trouble"><h2>۱۰. عیب‌یابی سریع</h2>
+<h3>فرمان hermes پیدا نمی‌شود</h3><p>ترمینال جدید باز کنید یا shell را reload کنید. سپس مسیر اجرایی و خروجی <code>hermes --help</code> را بررسی کنید.</p>
+<h3>اتصال مدل برقرار نمی‌شود</h3><p>دسترسی شبکه به endpoint، نام مدل، اعتبار کلید، محدودیت نرخ و کد خطای HTTP را بررسی کنید. کلید را در گزارش چاپ نکنید.</p>
+<h3>پاسخ‌ها کند یا ناقص‌اند</h3><p>یک مأموریت کوچک‌تر اجرا کنید، خروجی مورد انتظار را محدود کنید و ابتدا بررسی فقط‌خواندنی بخواهید. لاگ زمان و خطا را نگه دارید.</p>
+<h3>ابزار مورد نیاز در دسترس نیست</h3><p>با <code>hermes tools</code> وضعیت ابزارها را بررسی کنید. فعال‌سازی ابزار جدید را بدون بررسی مجوزها و ریسک امنیتی انجام ندهید.</p>
+<h3>گزارش Hermes با نتیجه محلی تفاوت دارد</h3><p>نسخه فایل، commit، مسیر کاری، محیط مجازی و فرمان دقیق را تطبیق دهید. گزارش را بر اساس شواهد محلی بازتولید کنید.</p></section>
+
+<section class="card" id="learn"><h2>۱۱. مسیر یادگیری پیشنهادی</h2>
+<ol><li><b>مبتدی:</b> اجرای Hermes، بررسی سلامت، گفت‌وگوی ساده و آشنایی با مدل.</li><li><b>کاربردی:</b> نوشتن مأموریت محدود، خواندن فایل‌ها و تهیه گزارش.</li><li><b>فنی:</b> ممیزی کد LiteX، شبیه‌سازی مستقل و تحلیل لاگ‌ها.</li><li><b>پیشرفته:</b> استفاده کنترل‌شده از ابزارها، مهارت‌ها (Skills)، اتصال MCP و خودکارسازی؛ فقط پس از شناخت مجوزها و امنیت.</li></ol>
+<p>پیشنهاد می‌شود هر مرحله با یک تمرین کوچک و فقط‌خواندنی تمام شود و قبل از رفتن به مرحله بعد، خروجی آن بازبینی شود.</p></section>
+
+<section class="card" id="links"><h2>۱۲. منابع رسمی و مطالعه بیشتر</h2>
+<ul>
+<li><a href="https://hermes-agent.nousresearch.com/docs/" target="_blank" rel="noopener noreferrer">مستندات رسمی Hermes Agent</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/getting-started/installation" target="_blank" rel="noopener noreferrer">راهنمای نصب رسمی</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/getting-started/quickstart" target="_blank" rel="noopener noreferrer">آموزش شروع سریع</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/getting-started/learning-path" target="_blank" rel="noopener noreferrer">مسیر یادگیری رسمی</a></li>
+<li><a href="https://github.com/NousResearch/hermes-agent" target="_blank" rel="noopener noreferrer">مخزن رسمی Hermes Agent در GitHub</a></li>
+</ul>
+<p class="muted">راهنمای رسمی ممکن است با نسخه نصب‌شده تفاوت داشته باشد؛ برای فرمان‌های دقیق، نسخه محلی و خروجی help را نیز بررسی کنید.</p></section>
+</div></div>
+<footer>راهنمای Hermes برای گردش‌کار پروژه Tang Primer 25K · محتوای آموزشی و قواعد عملیاتی</footer>
+</main></body></html>
