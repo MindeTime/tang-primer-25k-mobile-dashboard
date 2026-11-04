@@ -56,7 +56,10 @@ h2 { font-size:calc(1.35rem * var(--site-heading-scale)); margin:0; }
 .verified { background:#dff5ec; color:#126348; }
 .blocked { background:#ffe5e2; color:#a33b31; }
 .table-wrap { overflow-x:auto; }
-table { border-collapse:collapse; width:100%; min-width:650px; font-size:.9rem; }
+table { border-collapse:collapse; width:100%; min-width:760px; font-size:.9rem; }
+.order-link { display:inline-block; padding:4px 10px; border-radius:7px; background:#e2f0f5; color:#164b61; text-decoration:none; font-weight:700; white-space:nowrap; }
+.order-link:hover { background:#cce5ed; text-decoration:underline; }
+.item-link { color:inherit; text-decoration:underline; text-decoration-color:#5b9eaa; text-underline-offset:3px; }
 th,td { text-align:right; padding:11px 10px; border-bottom:1px solid light-dark(#e5ecef,#30434c); vertical-align:top; }
 th { color:light-dark(#607680,#a9bdc7); font-weight:700; }
 .list { margin:8px 0 0; padding-right:20px; }
@@ -116,17 +119,17 @@ footer { text-align:center; color:light-dark(#6b8089,#9fb2bc); font-size:.8rem; 
   <section class="section card">
     <div class="section-head"><h2>فهرست قطعات و وضعیت</h2><span class="muted">وضعیت‌ها مطابق آخرین گزارش‌های موجود</span></div>
     <div class="table-wrap"><table>
-      <thead><tr><th>قطعه</th><th>مدل / مشخصات</th><th>نقش در معماری</th><th>وضعیت ثبت‌شده</th></tr></thead>
+      <thead><tr><th>قطعه</th><th>مدل / مشخصات</th><th>نقش در معماری</th><th>وضعیت ثبت‌شده</th><th>لینک سفارش / محصول</th></tr></thead>
       <tbody>
-        <tr><td>برد اصلی</td><td>Sipeed Tang Primer 25K + Dock</td><td>پردازش و کنترل کل سیستم</td><td><span class="badge verified">موجود</span></td></tr>
-        <tr><td>نمایشگر لمسی</td><td>Waveshare 5inch HDMI LCD (H)، 800×480، SKU 14300</td><td>تصویر و لمس پنج‌نقطه‌ای</td><td><span class="badge selected">انتخاب‌شده</span></td></tr>
-        <tr><td>مبدل تصویر</td><td>Sipeed PMOD_DVI</td><td>خروجی تصویر FPGA به HDMI/DVI</td><td><span class="badge selected">انتخاب‌شده</span></td></tr>
-        <tr><td>حافظه خارجی</td><td>Sipeed TANG_SDRAM، 64MB</td><td>حافظه کاری و فریم‌بافر</td><td><span class="badge selected">انتخاب‌شده</span></td></tr>
-        <tr><td>دوربین</td><td>Arducam B006701، 2MP SPI / OV2640</td><td>ورودی تصویر دوربین</td><td><span class="badge selected">انتخاب‌شده</span></td></tr>
-        <tr><td>مودم 4G</td><td>Waveshare SIM7600E-H؛ لینک قبلی SKU 24013</td><td>اینترنت، تماس و پیامک</td><td><span class="badge selected">انتخاب‌شده؛ سفارش تأیید نشده</span></td></tr>
-        <tr><td>بلوتوث</td><td>DSD TECH HM-19، BLE 5.0</td><td>ارتباط بی‌سیم جانبی</td><td><span class="badge selected">گزینه انتخاب‌شده</span></td></tr>
-        <tr><td>لمس</td><td>USB از نمایشگر به USB Host برد</td><td>دریافت رویدادهای لمس</td><td><span class="badge pending">پیاده‌سازی نشده</span></td></tr>
-        <tr><td>آنتن مودم</td><td>آنتن خارجی 4G با اتصال SMA</td><td>ارتباط رادیویی LTE</td><td><span class="badge selected">انتخاب‌شده</span></td></tr>
+        <tr><td>برد اصلی</td><td>Sipeed Tang Primer 25K + Dock</td><td>پردازش و کنترل کل سیستم</td><td><span class="badge verified">موجود</span></td><td><a class="order-link" href="https://wiki.sipeed.com/hardware/en/tang/tang-primer-25k/primer-25k.html" target="_blank" rel="noopener noreferrer">صفحه محصول</a></td></tr>
+        <tr><td>نمایشگر لمسی</td><td>Waveshare 5inch HDMI LCD (H)، 800×480، SKU 14300</td><td>تصویر و لمس پنج‌نقطه‌ای</td><td><span class="badge selected">انتخاب‌شده</span></td><td><a class="order-link" href="https://www.waveshare.com/5inch-hdmi-lcd-h.htm" target="_blank" rel="noopener noreferrer">سفارش از Waveshare</a></td></tr>
+        <tr><td>مبدل تصویر</td><td>Sipeed PMOD_DVI</td><td>خروجی تصویر FPGA به HDMI/DVI</td><td><span class="badge selected">انتخاب‌شده</span></td><td><a class="order-link" href="https://www.aliexpress.com/w/wholesale-sipeed-pmod-dvi.html" target="_blank" rel="noopener noreferrer">جست‌وجوی خرید در AliExpress</a></td></tr>
+        <tr><td>حافظه خارجی</td><td>Sipeed TANG_SDRAM، 64MB (2×32MB)</td><td>حافظه کاری و فریم‌بافر</td><td><span class="badge selected">انتخاب‌شده</span></td><td><a class="order-link" href="https://www.aliexpress.com/w/wholesale-sipeed-tang-sdram.html" target="_blank" rel="noopener noreferrer">جست‌وجوی خرید در AliExpress</a></td></tr>
+        <tr><td>دوربین</td><td>Arducam B006701، 2MP Mini SPI</td><td>ورودی تصویر دوربین</td><td><span class="badge selected">انتخاب‌شده</span></td><td><a class="order-link" href="https://www.arducam.com/arducam-new-2mp-mini-spi-camera-module-for-arduino-uno-raspberry-pi-pico-and-other-mcu.html" target="_blank" rel="noopener noreferrer">سفارش از Arducam</a></td></tr>
+        <tr><td>مودم 4G</td><td>Waveshare SIM7600E-H 4G Module؛ گزینه SKU 24012</td><td>اینترنت، تماس و پیامک</td><td><span class="badge selected">انتخاب‌شده؛ سفارش تأیید نشده</span></td><td><a class="order-link" href="https://www.waveshare.com/sim7600g-h-4g-module.htm?sku=24012" target="_blank" rel="noopener noreferrer">صفحه مدل SIM7600E-H</a></td></tr>
+        <tr><td>بلوتوث</td><td>DSD TECH HM-19، BLE 5.0</td><td>ارتباط بی‌سیم جانبی</td><td><span class="badge selected">گزینه انتخاب‌شده</span></td><td><a class="order-link" href="https://www.deshide.com/product-details_HM-19-1.html" target="_blank" rel="noopener noreferrer">صفحه محصول DSD TECH</a></td></tr>
+        <tr><td>لمس</td><td>USB از نمایشگر به USB Host برد</td><td>دریافت رویدادهای لمس</td><td><span class="badge pending">پیاده‌سازی نشده</span></td><td><a class="order-link" href="https://www.waveshare.com/5inch-hdmi-lcd-h.htm" target="_blank" rel="noopener noreferrer">همراه نمایشگر</a></td></tr>
+        <tr><td>آنتن مودم</td><td>Waveshare 4G/3G/2G/LPWA External Antenna، SKU 21121</td><td>ارتباط رادیویی LTE</td><td><span class="badge selected">انتخاب‌شده</span></td><td><a class="order-link" href="https://www.waveshare.com/product/4g-3g-2g-lpwa-external-antenna.htm" target="_blank" rel="noopener noreferrer">سفارش از Waveshare</a></td></tr>
       </tbody>
     </table></div>
     <p class="muted small">کابل HDMI و کابل USB لمس در شرکت در دسترس‌اند و در فهرست خرید قرار نمی‌گیرند. تغذیه پرجریان مودم برای تست فرض شده؛ باتری جدید فعلاً در برنامه خرید نیست.</p>
