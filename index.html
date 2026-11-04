@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>داشبورد پروژه موبایل Tang Primer 25K</title>
+<style>
+:root {
+  --site-primary: #123c52;
+  --site-on-primary: #ffffff;
+  --site-secondary: #dceef0;
+  --site-on-secondary: #173b48;
+  --site-background: #eef3f5;
+  --site-on-background: #172b35;
+  --site-font-body: Tahoma, Arial, sans-serif;
+  --site-font-heading: Tahoma, Arial, sans-serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+  color-scheme: light dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: var(--site-font-body); background: var(--site-background); color: var(--site-on-background); line-height: 1.8; }
+#app { min-height: 100vh; width: 100%; border-radius: 0; background: light-dark(#eef3f5,#101b22); color: light-dark(#172b35,#e6eef2); }
+.hero { background: var(--site-primary); color: var(--site-on-primary); padding: calc(30px * var(--site-spacing-scale)) max(5vw,20px) calc(26px * var(--site-spacing-scale)); position: relative; overflow: hidden; }
+.hero:after { content:""; position:absolute; width:340px; height:340px; border:1px solid rgba(255,255,255,.16); border-radius:50%; left:-110px; top:-190px; opacity:var(--site-decoration-opacity); pointer-events:none; }
+.wrap { max-width: 1180px; margin: auto; }
+.eyebrow { font-size: .82rem; opacity:.78; letter-spacing:.04em; }
+h1,h2,h3 { font-family:var(--site-font-heading); line-height:1.45; }
+h1 { font-size:calc(2rem * var(--site-heading-scale)); margin:.35rem 0; }
+.hero p { margin:.4rem 0 0; opacity:.86; }
+.topline { display:flex; justify-content:space-between; gap:16px; align-items:center; flex-wrap:wrap; }
+.pill { display:inline-flex; align-items:center; gap:7px; border:1px solid currentColor; border-radius:999px; padding:3px 12px; font-size:.82rem; white-space:nowrap; }
+main { max-width:1180px; margin:auto; padding:24px max(4vw,16px) 48px; }
+.grid { display:grid; gap:16px; }
+.stats { grid-template-columns:repeat(4,minmax(0,1fr)); margin-top:-4px; }
+.card { background:light-dark(#ffffff,#192831); border:1px solid light-dark(#d9e3e8,#2c414c); border-radius:calc(16px * var(--site-radius-scale)); padding:18px; box-shadow:0 5px 18px rgba(10,35,48,.045); }
+.stat-label { color:light-dark(#5d737e,#a9bdc7); font-size:.86rem; }
+.stat-value { font-size:1.8rem; font-weight:800; margin-top:5px; }
+.progress-track { height:9px; background:light-dark(#e5ecef,#30434c); border-radius:20px; overflow:hidden; margin-top:12px; }
+.progress-fill { height:100%; width:17%; background:#2ca58d; border-radius:20px; }
+.section { margin-top:28px; }
+.section-head { display:flex; justify-content:space-between; align-items:end; gap:12px; flex-wrap:wrap; margin-bottom:12px; }
+h2 { font-size:calc(1.35rem * var(--site-heading-scale)); margin:0; }
+.muted { color:light-dark(#637984,#a9bdc7); font-size:.9rem; }
+.cols { grid-template-columns:1.2fr .8fr; }
+.timeline { border-right:2px solid light-dark(#d5e2e7,#354b56); padding-right:18px; }
+.event { position:relative; padding:0 4px 18px 0; }
+.event:before { content:""; position:absolute; right:-25px; top:8px; width:10px; height:10px; border-radius:50%; background:#2ca58d; border:3px solid light-dark(#fff,#192831); }
+.event h3 { font-size:1rem; margin:0 0 3px; }
+.event p { margin:0; color:light-dark(#617680,#afc0c8); font-size:.9rem; }
+.badge { display:inline-block; border-radius:7px; padding:1px 8px; font-size:.76rem; font-weight:700; margin-right:5px; }
+.selected { background:#e8f0ff; color:#24549a; }
+.pending { background:#fff2d8; color:#855400; }
+.verified { background:#dff5ec; color:#126348; }
+.blocked { background:#ffe5e2; color:#a33b31; }
+.table-wrap { overflow-x:auto; }
+table { border-collapse:collapse; width:100%; min-width:650px; font-size:.9rem; }
+th,td { text-align:right; padding:11px 10px; border-bottom:1px solid light-dark(#e5ecef,#30434c); vertical-align:top; }
+th { color:light-dark(#607680,#a9bdc7); font-weight:700; }
+.list { margin:8px 0 0; padding-right:20px; }
+.list li { margin:5px 0; }
+.callout { background:var(--site-secondary); color:var(--site-on-secondary); border-radius:calc(13px * var(--site-radius-scale)); padding:14px 16px; }
+.callout strong { display:block; margin-bottom:4px; }
+.architecture { display:flex; align-items:center; justify-content:center; gap:9px; flex-wrap:wrap; padding:14px 0; }
+.node { border:1px solid light-dark(#c9d9df,#405762); background:light-dark(#f7fafb,#21343e); padding:10px 13px; border-radius:11px; text-align:center; min-width:130px; }
+.arrow { color:#3a9a87; font-weight:900; }
+.small { font-size:.82rem; }
+.controls { display:flex; gap:8px; flex-wrap:wrap; }
+button { font:inherit; cursor:pointer; border:0; border-radius:9px; padding:9px 13px; background:var(--site-primary); color:var(--site-on-primary); }
+button.secondary { background:var(--site-secondary); color:var(--site-on-secondary); }
+input,textarea,select { width:100%; padding:10px 12px; border:1px solid light-dark(#cbd9df,#435963); border-radius:9px; background:light-dark(#fff,#15252d); color:inherit; font:inherit; }
+label { display:block; font-size:.88rem; margin:8px 0 4px; }
+.formgrid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.logitem { padding:12px 0; border-bottom:1px solid light-dark(#e5ecef,#30434c); }
+.logitem:last-child { border:0; }
+footer { text-align:center; color:light-dark(#6b8089,#9fb2bc); font-size:.8rem; padding:20px; }
+@media(max-width:850px) { .stats{grid-template-columns:repeat(2,minmax(0,1fr));} .cols{grid-template-columns:1fr;} }
+@media(max-width:520px) { h1{font-size:1.55rem;} .stats{grid-template-columns:1fr 1fr;} .stat-value{font-size:1.45rem;} .formgrid{grid-template-columns:1fr;} main{padding-top:16px;} }
+</style>
+</head>
+<body>
+<div id="app">
+<header class="hero">
+  <div class="wrap">
+    <div class="topline"><span class="eyebrow">دفتر فنی و گزارش پیشرفت</span><span class="pill">● وضعیت کلی: در حال توسعه</span></div>
+    <h1>پروژه موبایل با Tang Primer 25K</h1>
+    <p>داشبورد تصمیم‌ها، قطعات، معماری سخت‌افزار، آزمایش‌ها و گام‌های بعدی</p>
+  </div>
+</header>
+<main>
+  <section class="grid stats">
+    <div class="card"><div class="stat-label">پیشرفت کل پروژه موبایل</div><div class="stat-value">۱۷٪</div><div class="progress-track"><div class="progress-fill"></div></div><div class="muted small">مبنای فعلی؛ فقط با شواهد تأییدشده تغییر می‌کند.</div></div>
+    <div class="card"><div class="stat-label">پیشرفت دوره آموزشی</div><div class="stat-value">۲۲٪</div><div class="muted small">شاخص مستقل از پیشرفت پروژه</div></div>
+    <div class="card"><div class="stat-label">قطعات جانبی</div><div class="stat-value">انتخاب‌شده</div><div class="muted small">دریافت و آزمایش قطعات هنوز تأیید نشده است.</div></div>
+    <div class="card"><div class="stat-label">آخرین به‌روزرسانی</div><div class="stat-value" style="font-size:1.25rem">۴ نوامبر ۲۰۲۶</div><div class="muted small">بر اساس اطلاعات ثبت‌شده تا این تاریخ</div></div>
+  </section>
+
+  <section class="section grid cols">
+    <div class="card">
+      <div class="section-head"><h2>تعریف هدف پروژه</h2><span class="pill">هدف نهایی</span></div>
+      <p>ساخت یک دستگاه قابل‌حمل شبیه موبایل بر پایه FPGA، با رابط گرافیکی اختصاصی، نمایشگر لمسی، اینترنت 4G، تماس صوتی، پیامک، بلوتوث و دوربین.</p>
+      <div class="callout"><strong>قاعده ثبت پیشرفت</strong>انتخاب قطعه، سفارش، دریافت، نصب و آزمایش پنج وضعیت جداگانه‌اند. هیچ قطعه‌ای بدون گزارش کاربر «خریداری‌شده» یا «آزمایش‌شده» ثبت نمی‌شود.</div>
+    </div>
+    <div class="card">
+      <div class="section-head"><h2>قواعد ایمنی پروژه</h2></div>
+      <ul class="list">
+        <li>آزمایش‌ها فقط در پوشه مستقل زیر <b>~/litex_work/PRJ/</b>.</li>
+        <li>پروژه‌های قدیمی LiteX تغییر داده نمی‌شوند.</li>
+        <li>برنامه‌ریزی FPGA فقط با اجازه صریح؛ فعلاً SRAM، نه Flash.</li>
+        <li>تغییر قطعات انتخابی یا سفارش‌ها فقط با تأیید کاربر.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section card">
+    <div class="section-head"><h2>فهرست قطعات و وضعیت</h2><span class="muted">وضعیت‌ها مطابق آخرین گزارش‌های موجود</span></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>قطعه</th><th>مدل / مشخصات</th><th>نقش در معماری</th><th>وضعیت ثبت‌شده</th></tr></thead>
+      <tbody>
+        <tr><td>برد اصلی</td><td>Sipeed Tang Primer 25K + Dock</td><td>پردازش و کنترل کل سیستم</td><td><span class="badge verified">موجود</span></td></tr>
+        <tr><td>نمایشگر لمسی</td><td>Waveshare 5inch HDMI LCD (H)، 800×480، SKU 14300</td><td>تصویر و لمس پنج‌نقطه‌ای</td><td><span class="badge selected">انتخاب‌شده</span></td></tr>
+        <tr><td>مبدل تصویر</td><td>Sipeed PMOD_DVI</td><td>خروجی تصویر FPGA به HDMI/DVI</td><td><span class="badge selected">انتخاب‌شده</span></td></tr>
+        <tr><td>حافظه خارجی</td><td>Sipeed TANG_SDRAM، 64MB</td><td>حافظه کاری و فریم‌بافر</td><td><span class="badge selected">انتخاب‌شده</span></td></tr>
+        <tr><td>دوربین</td><td>Arducam B006701، 2MP SPI / OV2640</td><td>ورودی تصویر دوربین</td><td><span class="badge selected">انتخاب‌شده</span></td></tr>
+        <tr><td>مودم 4G</td><td>Waveshare SIM7600E-H؛ لینک قبلی SKU 24013</td><td>اینترنت، تماس و پیامک</td><td><span class="badge selected">انتخاب‌شده؛ سفارش تأیید نشده</span></td></tr>
+        <tr><td>بلوتوث</td><td>DSD TECH HM-19، BLE 5.0</td><td>ارتباط بی‌سیم جانبی</td><td><span class="badge selected">گزینه انتخاب‌شده</span></td></tr>
+        <tr><td>لمس</td><td>USB از نمایشگر به USB Host برد</td><td>دریافت رویدادهای لمس</td><td><span class="badge pending">پیاده‌سازی نشده</span></td></tr>
+        <tr><td>آنتن مودم</td><td>آنتن خارجی 4G با اتصال SMA</td><td>ارتباط رادیویی LTE</td><td><span class="badge selected">انتخاب‌شده</span></td></tr>
+      </tbody>
+    </table></div>
+    <p class="muted small">کابل HDMI و کابل USB لمس در شرکت در دسترس‌اند و در فهرست خرید قرار نمی‌گیرند. تغذیه پرجریان مودم برای تست فرض شده؛ باتری جدید فعلاً در برنامه خرید نیست.</p>
+  </section>
+
+  <section class="section grid cols">
+    <div class="card">
+      <div class="section-head"><h2>نقشه اتصال پیشنهادی</h2><span class="badge pending">نیازمند ممیزی نهایی پایه‌ها</span></div>
+      <div class="architecture"><div class="node"><b>FPGA</b><br><span class="small">Tang Primer 25K</span></div><span class="arrow">←→</span><div class="node"><b>PMOD_DVI</b><br><span class="small">J6 / PMOD2</span></div><span class="arrow">←→</span><div class="node"><b>LCD</b><br><span class="small">HDMI تصویر</span></div></div>
+      <div class="architecture"><div class="node"><b>LCD Touch</b><br><span class="small">USB</span></div><span class="arrow">←→</span><div class="node"><b>USB Host</b><br><span class="small">Dock J13</span></div></div>
+      <div class="architecture"><div class="node"><b>Camera</b><br><span class="small">SPI / I²C – J4</span></div><span class="arrow">←→</span><div class="node"><b>FPGA</b></div><span class="arrow">←→</span><div class="node"><b>SDRAM</b><br><span class="small">J3</span></div></div>
+      <div class="architecture"><div class="node"><b>SIM7600E-H</b><br><span class="small">UART – J5</span></div><span class="arrow">←→</span><div class="node"><b>FPGA</b></div><span class="arrow">←→</span><div class="node"><b>HM-19 BLE</b><br><span class="small">UART – J5</span></div></div>
+      <p class="muted small">این یک نقشه سطح‌بالاست، نه نقشه سیم‌کشی تأییدشده. اشتراک پایه‌ها، ولتاژ I/O، تغذیه و جهت کانکتورها باید با شماتیک و دیتاشیت هر ماژول نهایی شود.</p>
+    </div>
+    <div class="card">
+      <div class="section-head"><h2>موارد باز و ریسک‌ها</h2></div>
+      <ul class="list">
+        <li>تأیید شماتیک و پایه‌های PMOD_DVI و مسیر دقیق سیگنال‌ها.</li>
+        <li>انتقال صدای HDMI: نمایشگر خروجی هدفون دارد؛ پشتیبانی مسیر PMOD_DVI و پیاده‌سازی بسته‌های صوت HDMI هنوز تأیید نشده.</li>
+        <li>تطبیق باندهای SIM7600E-H با باندهای فعال ایرانسل در محل استفاده.</li>
+        <li>تأیید سطح منطقی UART مودم و HM-19 و نیاز به مبدل سطح ولتاژ.</li>
+        <li>USB OHCI/HID، توان VBUS و درایور لمسی در LiteX هنوز کامل نشده‌اند.</li>
+        <li>تناقض قبلی در امکان اتصال هم‌زمان همه تجهیزات باید با ممیزی پین‌به‌پین حل شود.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section grid cols">
+    <div class="card">
+      <div class="section-head"><h2>نتایج فنی تأییدشده</h2><span class="badge verified">آزمایش‌شده</span></div>
+      <div class="timeline">
+        <div class="event"><h3>راه‌اندازی پایه LiteX و BIOS</h3><p>اجرای SoC و کنسول BIOS روی برد تأیید شده است.</p></div>
+        <div class="event"><h3>آزمایش UART و ورودی/خروجی</h3><p>UART echo، فرمان LED، وضعیت UART، دکمه با pull-down و blink آزمایش شده‌اند.</p></div>
+        <div class="event"><h3>تست حافظه SRAM</h3><p>mem_test در SRAM موفق بوده؛ تست SDRAM قبلی بدون ماژول خارجی موفق نشده است.</p></div>
+        <div class="event"><h3>بهینه‌سازی BSRAM</h3><p>Variant C: مصرف BSRAM از 53/56 به 36/56 کاهش یافت؛ Fmax گزارش‌شده 58.623MHz.</p></div>
+        <div class="event"><h3>آزمایش مستقل ضربان LED</h3><p>پروژه heartbeat_led_stable در مسیر مستقل، با الگوی lub-dub و چرخه یک‌ثانیه‌ای روی SRAM پروگرام و تأیید شد. این نتیجه به‌تنهایی درصد پروژه موبایل را افزایش نمی‌دهد.</p></div>
+        <div class="event"><h3>ممیزی USB OHCI / DMA</h3><p>شبیه‌سازی FIX2c: از 20 سناریو، 16 PASS و 4 FAIL؛ صفر stall گزارش شده. انتقال اصلاح به درایور اصلی هنوز انجام نشده است.</p></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="section-head"><h2>مراحل کلان پروژه</h2></div>
+      <ol class="list">
+        <li><b>زیرساخت FPGA و LiteX</b> — در حال تکمیل</li>
+        <li><b>کلاک، CDC و حافظه خارجی</b> — نیازمند تکمیل و تست سخت‌افزاری</li>
+        <li><b>نمایشگر HDMI و رابط گرافیکی</b> — انتخاب قطعه؛ پیاده‌سازی باقی است</li>
+        <li><b>لمس USB</b> — انتخاب مسیر؛ درایور و تست باقی است</li>
+        <li><b>مودم 4G، تماس و SMS</b> — قطعه انتخاب شده؛ اتصال و نرم‌افزار باقی است</li>
+        <li><b>بلوتوث و دوربین</b> — انتخاب قطعه؛ اتصال و درایورها باقی است</li>
+        <li><b>یکپارچه‌سازی، تغذیه و بدنه قابل‌حمل</b> — باقی است</li>
+      </ol>
+      <div class="callout"><strong>قاعده درصددهی</strong>درصد کل فعلاً ۱۷٪ باقی می‌ماند. انتخاب یا سفارش قطعات، بدون نصب و تست، پیشرفت فنی محسوب نمی‌شود.</div>
+    </div>
+  </section>
+
+  <section class="section card">
+    <div class="section-head"><h2>دفتر ثبت گزارش‌های بعدی</h2><span class="muted">گزارش‌های افزوده‌شده در همین مرورگر ذخیره می‌شوند.</span></div>
+    <form id="logForm">
+      <div class="formgrid">
+        <div><label for="logDate">تاریخ</label><input id="logDate" type="date" value="2026-11-04" required></div>
+        <div><label for="logType">نوع گزارش</label><select id="logType"><option>تحقیق و بررسی</option><option>انتخاب قطعه</option><option>سفارش / دریافت</option><option>پیاده‌سازی</option><option>آزمایش و نتیجه</option><option>تصمیم معماری</option></select></div>
+      </div>
+      <label for="logTitle">عنوان</label><input id="logTitle" placeholder="مثلاً: تأیید پایه‌های PMOD_DVI" required>
+      <label for="logBody">شرح و شواهد</label><textarea id="logBody" rows="3" placeholder="نتیجه، لینک منبع، مسیر پروژه، گزارش تست یا وضعیت واقعی..."></textarea>
+      <div class="controls" style="margin-top:12px"><button type="submit">ثبت گزارش</button><button type="button" class="secondary" id="exportBtn">خروجی گرفتن از گزارش‌ها (JSON)</button></div>
+    </form>
+    <div id="logs" aria-live="polite" style="margin-top:12px"></div>
+  </section>
+  <footer>دفتر پروژه موبایل Tang Primer 25K · نسخه اولیه داشبورد · اطلاعات پایه مطابق سوابق تأییدشده تا ۴ نوامبر ۲۰۲۶</footer>
+</main>
+</div>
+<script>
+const storageKey = 'tang25k-mobile-project-logs-v1';
+const initialLogs = [
+  {date:'2026-11-04',type:'تصمیم معماری',title:'داشبورد پروژه ایجاد شد',body:'نسخه اولیه برای نگهداری وضعیت قطعات، نتایج فنی، موانع و گزارش‌های مرحله‌ای. درصد پایه پروژه ۱۷٪ و آموزش ۲۲٪.'}
+];
+function loadLogs(){ try { const v=JSON.parse(localStorage.getItem(storageKey)); return Array.isArray(v)?v:initialLogs; } catch(e){ return initialLogs; } }
+let logs=loadLogs();
+function renderLogs(){
+ const root=document.getElementById('logs');
+ if(!logs.length){root.innerHTML='<p class="muted">هنوز گزارشی ثبت نشده است.</p>';return;}
+ root.innerHTML=logs.slice().sort((a,b)=>b.date.localeCompare(a.date)).map(x=>`<div class="logitem"><div class="muted small">${escapeHtml(x.date)} · ${escapeHtml(x.type)}</div><b>${escapeHtml(x.title)}</b><div>${escapeHtml(x.body||'')}</div></div>`).join('');
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+document.getElementById('logForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ logs.push({date:document.getElementById('logDate').value,type:document.getElementById('logType').value,title:document.getElementById('logTitle').value.trim(),body:document.getElementById('logBody').value.trim()});
+ localStorage.setItem(storageKey,JSON.stringify(logs)); e.target.reset(); document.getElementById('logDate').value='2026-11-04'; renderLogs();
+});
+document.getElementById('exportBtn').addEventListener('click',()=>{
+ const blob=new Blob([JSON.stringify(logs,null,2)],{type:'application/json'}); const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='tang25k-project-logs.json'; a.click(); URL.revokeObjectURL(url);
+});
+renderLogs();
+</script>
+</body>
+</html>
