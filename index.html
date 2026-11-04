@@ -34,7 +34,7 @@ h1 { font-size:calc(2rem * var(--site-heading-scale)); margin:.35rem 0; }
 .pill { display:inline-flex; align-items:center; gap:7px; border:1px solid currentColor; border-radius:999px; padding:3px 12px; font-size:.82rem; white-space:nowrap; }
 main { max-width:1180px; margin:auto; padding:24px max(4vw,16px) 48px; }
 .grid { display:grid; gap:16px; }
-.stats { grid-template-columns:repeat(4,minmax(0,1fr)); margin-top:-4px; }
+.stats { grid-template-columns:repeat(3,minmax(0,1fr)); margin-top:-4px; }
 .card { background:light-dark(#ffffff,#192831); border:1px solid light-dark(#d9e3e8,#2c414c); border-radius:calc(16px * var(--site-radius-scale)); padding:18px; box-shadow:0 5px 18px rgba(10,35,48,.045); }
 .stat-label { color:light-dark(#5d737e,#a9bdc7); font-size:.86rem; }
 .stat-value { font-size:1.8rem; font-weight:800; margin-top:5px; }
@@ -92,7 +92,6 @@ footer { text-align:center; color:light-dark(#6b8089,#9fb2bc); font-size:.8rem; 
 <main>
   <section class="grid stats">
     <div class="card"><div class="stat-label">پیشرفت کل پروژه موبایل</div><div class="stat-value">۱۷٪</div><div class="progress-track"><div class="progress-fill"></div></div><div class="muted small">مبنای فعلی؛ فقط با شواهد تأییدشده تغییر می‌کند.</div></div>
-    <div class="card"><div class="stat-label">پیشرفت دوره آموزشی</div><div class="stat-value">۲۲٪</div><div class="muted small">شاخص مستقل از پیشرفت پروژه</div></div>
     <div class="card"><div class="stat-label">قطعات جانبی</div><div class="stat-value">انتخاب‌شده</div><div class="muted small">دریافت و آزمایش قطعات هنوز تأیید نشده است.</div></div>
     <div class="card"><div class="stat-label">آخرین به‌روزرسانی</div><div class="stat-value" style="font-size:1.25rem">۴ نوامبر ۲۰۲۶</div><div class="muted small">بر اساس اطلاعات ثبت‌شده تا این تاریخ</div></div>
   </section>
@@ -201,7 +200,7 @@ footer { text-align:center; color:light-dark(#6b8089,#9fb2bc); font-size:.8rem; 
 <script>
 const storageKey = 'tang25k-mobile-project-logs-v1';
 const initialLogs = [
-  {date:'2026-11-04',type:'تصمیم معماری',title:'داشبورد پروژه ایجاد شد',body:'نسخه اولیه برای نگهداری وضعیت قطعات، نتایج فنی، موانع و گزارش‌های مرحله‌ای. درصد پایه پروژه ۱۷٪ و آموزش ۲۲٪.'}
+  {date:'2026-11-04',type:'تصمیم معماری',title:'داشبورد پروژه ایجاد شد',body:'نسخه اولیه برای نگهداری وضعیت قطعات، نتایج فنی، موانع و گزارش‌های مرحله‌ای. درصد پایه پروژه ۱۷٪.'}
 ];
 function loadLogs(){ try { const v=JSON.parse(localStorage.getItem(storageKey)); return Array.isArray(v)?v:initialLogs; } catch(e){ return initialLogs; } }
 let logs=loadLogs();
