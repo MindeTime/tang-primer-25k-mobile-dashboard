@@ -88,7 +88,7 @@ html,body{background:#0b121a!important;background-image:none!important}
  const canvas=document.getElementById('starfield');
  if(!canvas || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
  const ctx=canvas.getContext('2d');
- let w=0,h=0,stars=[],shooters=[],bursts=[],raf=0,nextPairAt=performance.now()+15000,pairSerial=0;
+ let w=0,h=0,stars=[],shooters=[],bursts=[],raf=0,pairSerial=0;
  function spawnShooter(){
   const fromRight=Math.random()>.5;
   const speed=2.5+Math.random()*1.1;
@@ -127,11 +127,10 @@ html,body{background:#0b121a!important;background-image:none!important}
  }
  function draw(t){
   ctx.clearRect(0,0,w,h);
-  if(shooters.length===0 && t>=nextPairAt){
+  // Keep one shooting-star sequence active: start the next one as soon as the previous leaves/collides.
+  if(shooters.length===0){
    if(Math.random()<.42) spawnCollisionPair(); else spawnShooter();
-   nextPairAt=t+18000+Math.random()*17000;
   }
-  if(shooters.length===0 && t<nextPairAt && Math.random()<.00022) spawnShooter();
   for(let i=shooters.length-1;i>=0;i--){
    const q=shooters[i],fade=Math.min(1,q.life/5,(q.max-q.life)/9);
    const tx=q.x-q.vx*(q.length/Math.abs(q.vx)),ty=q.y-q.vy*(q.length/Math.abs(q.vx));
