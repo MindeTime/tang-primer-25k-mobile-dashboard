@@ -47,9 +47,9 @@
       const button=document.createElement('button');
       button.id='site-logout-button';
       button.type='button';
-      button.textContent='خروج از سایت';
+      button.textContent='خروج';
       button.setAttribute('aria-label','خروج و قفل کردن دوباره سایت');
-      button.style.cssText='position:fixed;top:14px;left:16px;z-index:99999;border:1px solid #d7e3e9;border-radius:10px;padding:10px 16px;background:#102f43;color:#fff;font:600 13px Tahoma,Arial,sans-serif;cursor:pointer;box-shadow:0 4px 14px #102f4330';
+      button.style.cssText='position:fixed;top:14px;right:16px;z-index:99999;border:1px solid #d7e3e9;border-radius:10px;padding:10px 16px;background:#102f43;color:#fff;font:600 13px Tahoma,Arial,sans-serif;cursor:pointer;box-shadow:0 4px 14px #102f4330';
       button.addEventListener('click',()=>{
         sessionStorage.removeItem(KEY);
         const next=location.pathname+location.search+location.hash;
