@@ -91,10 +91,10 @@ html,body{background:#0b121a!important;background-image:none!important}
  let w=0,h=0,stars=[],shooters=[],raf=0;
  function spawnShooter(){
   const fromRight=Math.random()>.5;
-  const speed=7+Math.random()*6;
+  const speed=3.2+Math.random()*2.2;
   shooters.push({x:fromRight?w+30:Math.random()*w*.65,y:Math.random()*h*.48,
    vx:fromRight?-speed:speed,vy:2.5+Math.random()*3.5,
-   length:90+Math.random()*100,life:0,max:34+Math.random()*22,width:1.5+Math.random()*1.5});
+   length:65+Math.random()*55,life:0,max:34+Math.random()*22,width:1.5+Math.random()*1.5});
  }
  function resize(){
   const dpr=Math.min(window.devicePixelRatio||1,2);
@@ -107,7 +107,7 @@ html,body{background:#0b121a!important;background-image:none!important}
  }
  function draw(t){
   ctx.clearRect(0,0,w,h);
-  if(shooters.length<3 && Math.random()<.035) spawnShooter();
+  if(shooters.length<1 && Math.random()<.012) spawnShooter();
   for(let i=shooters.length-1;i>=0;i--){
    const q=shooters[i],fade=Math.min(1,q.life/5,(q.max-q.life)/9);
    const tx=q.x-q.vx*(q.length/Math.abs(q.vx)),ty=q.y-q.vy*(q.length/Math.abs(q.vx));
