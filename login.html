@@ -11,7 +11,6 @@
 body{margin:0;min-height:100vh;padding:34px 22px;display:grid;place-items:center;overflow-x:hidden;background:radial-gradient(ellipse at 12% 12%,#d5e9ef 0,transparent 34%),radial-gradient(ellipse at 88% 85%,#d4e4ec 0,transparent 34%),linear-gradient(135deg,#f5f8fa,#e6eef2);font-family:Tahoma,Arial,sans-serif;color:var(--ink)}
 .scene{width:min(1120px,100%);display:grid;grid-template-columns:1fr 390px 1fr;grid-template-rows:auto auto;align-items:center;gap:22px;position:relative}
 .login{grid-column:2;grid-row:1/3;position:relative;z-index:2;background:#ffffffed;border:1px solid #fff;border-radius:26px;padding:34px 30px;box-shadow:0 24px 70px #17394b24,0 4px 14px #17394b0d;text-align:center;backdrop-filter:blur(12px)}
-.mark{width:58px;height:58px;margin:0 auto 17px;border-radius:18px;background:linear-gradient(145deg,#1c718e,#102f43);color:#fff;display:grid;place-items:center;font-size:26px;font-weight:bold;box-shadow:0 8px 20px #17627d35}
 h1{font-size:1.42rem;margin:0 0 10px;color:var(--navy)}
 .sub{color:var(--muted);font-size:.91rem;line-height:1.9;margin:0 0 26px}
 label{display:block;text-align:right;font-size:.9rem;margin-bottom:9px;font-weight:bold;color:#294958}
@@ -62,7 +61,7 @@ input::placeholder,textarea::placeholder{color:#91a6b5!important}
 table{background:#111e29!important;color:#e6edf3!important;border-color:#2b4353!important}th{background:#1b303d!important}
 td,th{border-color:#2b4353!important}hr{border-color:#2b4353!important}
 .login{background:#111e29!important;border:2px solid #35b8d8!important;box-shadow:0 0 0 4px #35b8d81c,0 0 24px #35b8d84d,0 24px 70px #0008!important}
-.mark{background:linear-gradient(145deg,#1c718e,#102f43)!important}.sub,.muted,.hint,.note{color:#a9bbc7!important}
+.sub,.muted,.hint,.note{color:#a9bbc7!important}
 
 /* Animated starfield background */
 #starfield{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
@@ -199,7 +198,6 @@ html,body{background:#0b121a!important;background-image:none!important}
 <figure class="photo"><img src="https://wiki.sipeed.com/hardware/zh/tang/tang-PMOD/assets/TANG_SDRAM_top.jpg" alt="ماژول TANG SDRAM" loading="lazy"><figcaption>TANG SDRAM</figcaption></figure>
 </section>
 <section class="login">
-<div class="mark">T</div>
 <h1>داشبورد پروژه موبایل</h1>
 <p class="sub">برای ورود، رمز عبور را وارد کنید.</p>
 <form id="login-form" autocomplete="on">
