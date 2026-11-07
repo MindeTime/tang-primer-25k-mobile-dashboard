@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>دفتر یادداشت روزانه | پروژه Tang Primer 25K</title>
+<style>
+:root{--primary:#123c52;--bg:#eef3f5;--ink:#172b35;--muted:#647b86;--line:#dbe6ea}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Tahoma,Arial,sans-serif;line-height:1.9}
+.hero{background:var(--primary);color:#fff;padding:28px max(5vw,18px)}.wrap{max-width:1080px;margin:auto}
+h1{font-size:1.9rem;margin:4px 0}.hero p{margin:4px 0 0;opacity:.85}
+.site-nav{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}.site-nav a{color:#fff;text-decoration:none;border:1px solid #ffffff70;border-radius:999px;padding:5px 14px;font-size:.88rem}.site-nav a.active,.site-nav a:hover{background:#ffffff25;border-color:#fff}
+main{max-width:1080px;margin:auto;padding:24px 18px 50px}.layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:18px;align-items:start}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 7px 22px #0a23300c}
+h2{font-size:1.2rem;margin:0 0 12px}.muted{color:var(--muted);font-size:.88rem}
+.date-item{display:block;padding:12px 13px;margin:9px 0;border:1px solid var(--line);border-radius:11px;text-decoration:none;color:inherit;background:#f8fbfc}
+.date-item:hover{border-color:#3995a8;background:#f0f8fa}.date-item b{display:block;color:#164b61}.date-item span{font-size:.84rem;color:var(--muted)}
+.entry{scroll-margin-top:18px;border-bottom:1px solid var(--line);padding:4px 0 18px;margin-bottom:18px}.entry:last-child{border:0;margin:0;padding-bottom:0}
+.entry h2{font-size:1.35rem;color:#164b61}.tag{display:inline-block;border-radius:7px;padding:2px 9px;background:#e6f1f5;color:#24576a;font-size:.78rem;margin:2px}
+h3{font-size:1rem;margin:15px 0 4px}ul{margin:5px 0;padding-right:22px}li{margin:5px 0}
+.result{background:#edf7f2;border-right:4px solid #299875;padding:12px 14px;border-radius:8px;margin-top:12px}
+a.inline{color:#12627a;text-underline-offset:3px}
+footer{text-align:center;color:var(--muted);font-size:.8rem;padding:20px}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.hero h1{font-size:1.5rem}}
+</style>
+<script src="auth.js"></script>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<div class="muted" style="color:#d3e5eb">دفتر ثبت فعالیت‌ها و تصمیم‌های پروژه</div>
+<h1>دفتر یادداشت روزانه</h1>
+<p>مرور یکپارچه فعالیت‌ها، بررسی‌ها، تصمیم‌ها و نتایج به تفکیک تاریخ</p>
+<nav class="site-nav" aria-label="ناوبری اصلی">
+<a href="index.html">داشبورد اصلی</a><a href="hermes.html">Hermes</a><a href="components.html">قطعات جانبی پروژه موبایل</a><a href="axi-stream.html">توسعه ارتباط پرسرعت FPGA</a><a href="daily-notes.html" class="active">دفتر یادداشت روزانه</a>
+</nav></div></header>
+<main><div class="layout">
+<aside class="card"><h2>فهرست روزها</h2><p class="muted">تاریخ‌ها از جدید به قدیم مرتب شده‌اند. برای دیدن گزارش کامل، روی تاریخ بزنید.</p>
+<a class="date-item" href="#day-1405-08-16"><b>۱۶ آبان ۱۴۰۵</b><span>تعریف پروژه‌های ارتباط پرسرعت و بررسی روش‌های انتقال داده</span></a>
+</aside>
+<section class="card">
+<article class="entry" id="day-1405-08-16">
+<h2>۱۶ آبان ۱۴۰۵</h2>
+<div><span class="tag">تعریف محدوده پروژه</span><span class="tag">بررسی فنی</span><span class="tag">تصمیم معماری</span><span class="tag">به‌روزرسانی سایت</span></div>
+<h3>۱. تفکیک هدف‌ها و محدوده کار</h3>
+<ul>
+<li>تعریف دو مسیر مستقل برای بررسی ارتباط پرسرعت FPGA انجام شد: پروژه اول برای دستیابی به بیشترین نرخ انتقال داده روی یک بورد و پروژه دوم برای بررسی ارتباط میان دو بورد با استفاده از سیم.</li>
+<li>تصمیم گرفته شد در مقطع فعلی فقط روی پروژه اول کار شود؛ پروژه دوم خارج از محدوده فعالیت جاری باقی می‌ماند.</li>
+<li>تأکید شد مراحل کار به‌صورت گام‌به‌گام پیش برود و پیش از ثبت هر محتوای فنی جدید در سایت، منابع و نتایج بررسی و درباره انتشار آن تصمیم‌گیری شود.</li>
+</ul>
+<h3>۲. روش‌های ارتباط پرسرعت مورد بررسی</h3>
+<ul>
+<li>Hard SerDes اختصاصی</li>
+<li>MIPI D-PHY</li>
+<li>Soft SerDes با LVDS و EasyCDR</li>
+<li>LVDS چندکاناله با DDR</li>
+</ul>
+<p>این چهار روش به‌عنوان مسیرهای قابل بررسی در صفحه پروژه ثبت و برای هر روش صفحه تخصصی جداگانه در نظر گرفته شد. ثبت روش‌ها به معنی انجام تست یا اندازه‌گیری عملی نیست.</p>
+<h3>۳. بررسی Hard SerDes</h3>
+<ul>
+<li>بررسی قابلیت‌های خانواده GW5A-25 نشان داد این قطعه ترنسیور Hard SerDes اختصاصی ندارد؛ بنابراین اجرای تست مبتنی بر Hard SerDes روی همین FPGA امکان‌پذیر نیست.</li>
+<li>قرار شد در صفحه این روش، محدودیت بورد فعلی شفاف توضیح داده شود و خانواده‌های FPGA گوین که این قابلیت را دارند معرفی شوند.</li>
+</ul>
+<h3>۴. وضعیت ثبت در سایت</h3>
+<ul>
+<li>صفحه پروژه ارتباط پرسرعت به چهار روش بالا متصل شد تا با انتخاب هر روش، صفحه طراحی و نتایج همان روش باز شود.</li>
+<li>تصمیم گرفته شد محتوای فنی جدید فقط پس از بررسی و تأیید مشترک به سایت اضافه شود؛ مواردی که هنوز توافق نشده‌اند نباید به‌عنوان نتیجه قطعی منتشر شوند.</li>
+</ul>
+<div class="result"><b>جمع‌بندی روز:</b> محدوده کار جاری روی پروژه اول تثبیت شد، چهار روش ارتباط پرسرعت برای بررسی مشخص شدند و محدودیت Hard SerDes در GW5A-25 روشن شد. در این روز نتیجه اندازه‌گیری عملی نرخ انتقال یا BER برای این چهار روش ثبت نشده است.</div>
+<h3>موارد باز برای ادامه</h3>
+<ul>
+<li>ادامه بررسی منابع و محدودیت‌های هر یک از چهار روش، به‌ترتیب و با تأیید مرحله‌ای.</li>
+<li>تعیین اینکه کدام توضیحات و نتایج پس از بررسی در صفحات تخصصی سایت منتشر شوند.</li>
+</ul>
+<p class="muted">ثبت‌کننده: محمد خاکپور · تاریخ ثبت: ۱۶ آبان ۱۴۰۵</p>
+</article>
+</section></div></main>
+<footer>دفتر یادداشت روزانه پروژه Tang Primer 25K · گزارش‌ها بر اساس فعالیت‌های تأییدشده ثبت می‌شوند.</footer>
+</body></html>
