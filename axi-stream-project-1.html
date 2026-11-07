@@ -15,6 +15,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:12px}
 @media(max-width:600px){h1{font-size:1.4rem}dl{grid-template-columns:1fr;gap:2px}dd{margin-bottom:9px}}
 
 .site-nav{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}.site-nav a{display:inline-block;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.48);border-radius:999px;padding:5px 14px;font-size:.88rem}.site-nav a:hover,.site-nav a.active{background:rgba(255,255,255,.18);border-color:#fff}
+.protocol-tab{display:block;padding:16px;border:1px solid #d9e3e8;border-radius:12px;color:#123c52;text-decoration:none;background:#f8fbfc;cursor:pointer;transition:background .15s,border-color .15s,transform .15s}.protocol-tab:hover{background:#eaf4f6;border-color:#16856d;transform:translateY(-2px)}
 </style><script src="auth.js"></script></head>
 <body><header><div class="wrap"><div class="muted" style="color:#d6e4e9">صفحه تخصصی پروژه اول</div><h1>پروژه اول: حداکثر نرخ انتقال داده روی یک بورد</h1><div>بررسی و مقایسه روش‌های ارتباطی قابل اجرا با استفاده از پایه‌های همان بورد</div><nav class="site-nav" aria-label="ناوبری اصلی"><a href="index.html">داشبورد اصلی</a><a href="hermes.html">Hermes</a><a href="components.html">قطعات جانبی پروژه موبایل</a><a href="axi-stream.html" class="active">توسعه ارتباط پرسرعت FPGA</a></nav></div></header>
 <main>
@@ -47,10 +48,10 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:12px}
 <section class="card"><h2>پروتکل‌های پرسرعت انتقال داده</h2>
 <p>چهار روش زیر برای بررسی، طراحی و آزمایش روی برد Tang Primer 25K در نظر گرفته شده‌اند. با انتخاب هر روش وارد صفحه تخصصی طراحی، محدودیت‌های سخت‌افزاری و نتایج همان آزمایش می‌شوید. نتیجه‌ها تا پیش از اجرای تست، اندازه‌گیری‌نشده باقی می‌مانند.</p>
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:15px">
-<a href="hard-serdes.html" style="display:block;padding:16px;border:1px solid #d9e3e8;border-radius:12px;color:#123c52;text-decoration:none;background:#f8fbfc"><b>۱. Hard SerDes اختصاصی</b><div class="muted">امکان‌سنجی ترنسیور سخت‌افزاری اختصاصی</div><span style="color:#16856d;font-weight:bold">ورود به صفحه طراحی و نتایج ←</span></a>
-<a href="mipi-dphy.html" style="display:block;padding:16px;border:1px solid #d9e3e8;border-radius:12px;color:#123c52;text-decoration:none;background:#f8fbfc"><b>۲. MIPI D-PHY</b><div class="muted">بررسی بلوک اختصاصی و دسترسی پایه‌ها</div><span style="color:#16856d;font-weight:bold">ورود به صفحه طراحی و نتایج ←</span></a>
-<a href="soft-serdes-easycdr.html" style="display:block;padding:16px;border:1px solid #d9e3e8;border-radius:12px;color:#123c52;text-decoration:none;background:#f8fbfc"><b>۳. Soft SerDes با LVDS و EasyCDR</b><div class="muted">بررسی لینک سریال پیاده‌سازی‌شده با منابع FPGA</div><span style="color:#16856d;font-weight:bold">ورود به صفحه طراحی و نتایج ←</span></a>
-<a href="lvds-multilane-ddr.html" style="display:block;padding:16px;border:1px solid #d9e3e8;border-radius:12px;color:#123c52;text-decoration:none;background:#f8fbfc"><b>۴. LVDS چندکاناله با DDR</b><div class="muted">انتقال تفاضلی چندمسیره با نمونه‌برداری دو لبه</div><span style="color:#16856d;font-weight:bold">ورود به صفحه طراحی و نتایج ←</span></a>
+<a class="protocol-tab" href="hard-serdes.html"><b>۱. Hard SerDes اختصاصی</b><div class="muted">امکان‌سنجی ترنسیور سخت‌افزاری اختصاصی</div></a>
+<a class="protocol-tab" href="mipi-dphy.html"><b>۲. MIPI D-PHY</b><div class="muted">بررسی بلوک اختصاصی و دسترسی پایه‌ها</div></a>
+<a class="protocol-tab" href="soft-serdes-easycdr.html"><b>۳. Soft SerDes با LVDS و EasyCDR</b><div class="muted">بررسی لینک سریال پیاده‌سازی‌شده با منابع FPGA</div></a>
+<a class="protocol-tab" href="lvds-multilane-ddr.html"><b>۴. LVDS چندکاناله با DDR</b><div class="muted">انتقال تفاضلی چندمسیره با نمونه‌برداری دو لبه</div></a>
 </div></section>
 
 <section class="card"><h2>گزارش فعالیت‌ها و نتایج</h2><p class="muted">تمام فعالیت‌های پروژه، همراه با تاریخ شمسی و نتیجه واقعی، به‌ترتیب زمان در این بخش ثبت می‌شوند.</p><div style="border-right:3px solid var(--teal);padding:2px 14px;margin-top:14px"><b>۱۶ آبان ۱۴۰۵</b><p><b>تعریف پروژه و فهرست روش‌های پرسرعت ثبت شد.</b></p><p><b>نتیجه:</b> چهار روش برای بررسی تخصصی تعیین شد: Hard SerDes اختصاصی، MIPI D-PHY، Soft SerDes با LVDS و EasyCDR، و LVDS چندکاناله با DDR. برای هر روش صفحه مستقل طراحی و ثبت نتایج ایجاد شد؛ هنوز هیچ نتیجه آزمایش جدیدی ثبت نشده است.</p></div></section>
