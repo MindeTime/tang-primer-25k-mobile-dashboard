@@ -18,6 +18,8 @@ table{width:100%;border-collapse:collapse}td,th{text-align:right;padding:9px;bor
 footer{text-align:center;color:var(--muted);font-size:.8rem;padding:20px}
 @media(max-width:780px){.layout{grid-template-columns:1fr}.toc{position:static}.toc nav{display:grid;grid-template-columns:1fr 1fr}}
 
+
+.site-nav{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}.site-nav a{display:inline-block;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.48);border-radius:999px;padding:5px 14px;font-size:.88rem}.site-nav a:hover,.site-nav a.active{background:rgba(255,255,255,.18);border-color:#fff}
 </style>
 <script src="auth.js"></script>
 </head>
@@ -26,7 +28,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:20px}
 <div class="muted">راهنمای عملیاتی و آموزشی</div>
 <h1>Hermes Agent</h1>
 <p>راهنمای استفاده از عامل هوشمند Hermes برای تحقیق، ممیزی فنی و پیشبرد کنترل‌شده پروژه Tang Primer 25K</p>
-<a class="back" href="index.html">← بازگشت به صفحه اصلی</a>
+<nav class="site-nav" aria-label="ناوبری اصلی"><a href="index.html">داشبورد اصلی</a><a href="hermes.html" class="active">Hermes</a><a href="components.html">قطعات جانبی</a><a href="training.html">آموزش</a><a href="axi-stream.html">توسعه ارتباط پرسرعت FPGA</a></nav>
 </div></header>
 <main class="wrap">
 <div class="layout">
