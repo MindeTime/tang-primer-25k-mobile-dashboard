@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>پروژه دوم AXI-Stream | ارتباط بین دو بورد</title><style>
+:root{color-scheme:light;--navy:#123c52;--ink:#172b35;--muted:#637984;--line:#d9e3e8;--bg:#eef3f5;--teal:#16856d}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.9 Tahoma,Arial,sans-serif}
+header{background:var(--navy);color:#fff;padding:26px max(5vw,18px)}.wrap,main{max-width:950px;margin:auto}
+h1{font-size:1.7rem;margin:5px 0}h2{font-size:1.15rem;margin:0 0 12px}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}nav a{color:#fff;text-decoration:none;border:1px solid #ffffff70;border-radius:20px;padding:4px 14px;font-size:.88rem}
+main{padding:24px 18px 48px}.card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:20px;margin-bottom:16px;box-shadow:0 5px 18px #0a23300b}
+.project{border-right:5px solid var(--teal)}.muted{color:var(--muted);font-size:.9rem}
+dl{display:grid;grid-template-columns:155px 1fr;gap:9px 14px;margin:0}dt{font-weight:700;color:#45616d}dd{margin:0}
+.goal{background:#e5f3ef;border-radius:10px;padding:14px 16px;margin-top:16px}
+.back{display:inline-block;color:#126b5a;text-decoration:none;font-weight:700;margin-bottom:14px}
+footer{text-align:center;color:var(--muted);font-size:.8rem;padding:12px}
+@media(max-width:600px){h1{font-size:1.4rem}dl{grid-template-columns:1fr;gap:2px}dd{margin-bottom:9px}}
+</style><script src="auth.js"></script></head>
+<body><header><div class="wrap"><div class="muted" style="color:#d6e4e9">صفحه تخصصی پروژه دوم</div><h1>پروژه دوم: ارتباط AXI-Stream بین دو بورد</h1><div>اندازه‌گیری و بهینه‌سازی حداکثر نرخ انتقال داده بین دو FPGA</div><nav><a href="index.html">داشبورد اصلی</a><a href="axi-stream.html">صفحه اصلی AXI-Stream</a></nav></div></header>
+<main><a class="back" href="axi-stream.html">← بازگشت به فهرست پروژه‌های AXI-Stream</a>
+<section class="card project"><h2>تعریف و مشخصات پروژه</h2><dl>
+<dt>بستر سخت‌افزاری</dt><dd>دو بورد Sipeed Tang Primer 25K</dd>
+<dt>اتصال فیزیکی</dt><dd>اتصال دو بورد به یکدیگر با استفاده از دو سیم؛ مسیر ارسال و دریافت بین پایه‌های ورودی و خروجی دو بورد برقرار می‌شود.</dd>
+<dt>ساختار بورد فرستنده</dt><dd>پیاده‌سازی یک هسته فرستنده AXI-Stream روی بورد اول</dd>
+<dt>ساختار بورد گیرنده</dt><dd>پیاده‌سازی یک هسته گیرنده AXI-Stream روی بورد دوم</dd>
+<dt>هدف پروژه</dt><dd>آزمایش و بهینه‌سازی ارتباط داده بین دو بورد برای رسیدن به حداکثر نرخ انتقال داده ممکن</dd>
+</dl><div class="goal"><b>هدف اصلی:</b> اندازه‌گیری نرخ انتقال واقعی بین دو FPGA و بهینه‌سازی طراحی فرستنده، گیرنده و رابط فیزیکی برای دستیابی به بیشترین پهنای باند پایدار.</div></section>
+<section class="card"><h2>دامنه فعلی پروژه</h2><p>در این مرحله تمرکز بر ارتباط فیزیکی دو بورد است؛ یک بورد داده را از طریق هسته AXI-Stream ارسال می‌کند و بورد دوم داده را از طریق هسته گیرنده دریافت می‌کند. جزئیات پایه‌ها، مشخصات الکتریکی اتصال، فرکانس و روش آزمون در مراحل بعدی و پس از بررسی فنی تعیین خواهند شد.</p></section>
+<footer>صفحه تخصصی پروژه دوم AXI-Stream</footer></main></body></html>
