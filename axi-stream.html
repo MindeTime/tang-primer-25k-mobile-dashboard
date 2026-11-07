@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>پروژه جدید AXI-Stream | داشبورد Tang Primer 25K</title>
+<style>
+:root{color-scheme:light;--navy:#123c52;--ink:#172b35;--muted:#637984;--line:#d9e3e8;--bg:#eef3f5;--teal:#16856d}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.85 Tahoma,Arial,sans-serif}
+.hero{background:var(--navy);color:#fff;padding:28px max(5vw,18px)}.wrap{max-width:1100px;margin:auto}
+h1{font-size:1.9rem;margin:5px 0}h2{font-size:1.2rem;margin:0}.muted{color:var(--muted);font-size:.9rem}.hero .muted{color:#d6e4e9}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}nav a{color:#fff;text-decoration:none;border:1px solid #ffffff70;border-radius:20px;padding:4px 14px;font-size:.88rem}nav a:hover,nav a.active{background:#ffffff24}
+main{max-width:1100px;margin:auto;padding:24px 18px 48px}.intro,.card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:18px;margin-bottom:16px;box-shadow:0 5px 18px #0a23300b}
+.intro{border-right:5px solid var(--teal)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{margin-bottom:12px}label{display:block;font-size:.9rem;font-weight:700;margin-bottom:5px}input,textarea,select{width:100%;font:inherit;padding:10px 11px;border:1px solid #cbd9df;border-radius:9px;background:#fff;color:var(--ink)}textarea{min-height:95px;resize:vertical}.hint{font-size:.8rem;color:var(--muted);margin-top:3px}
+.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:13px}.tag{font-size:.78rem;border-radius:20px;padding:2px 10px;background:#e5f3ef;color:#126348}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}button{font:inherit;border:0;border-radius:9px;padding:9px 16px;background:var(--navy);color:#fff;cursor:pointer}button.secondary{background:#e3eef1;color:#173b48}button.danger{background:#fff0ed;color:#9b3b30}
+.signal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.signal{background:#f6fafb;border:1px solid var(--line);padding:12px;border-radius:10px}.signal b{display:block}.signal span{font-size:.82rem;color:var(--muted)}
+footer{text-align:center;color:var(--muted);font-size:.8rem;padding:12px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.signal-grid{grid-template-columns:1fr 1fr}h1{font-size:1.5rem}}
+</style>
+<script src="auth.js"></script>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+<div class="muted">فضای تعریف و مستندسازی پروژه مستقل</div>
+<h1>پروژه جدید: AXI-Stream</h1>
+<div>تعریف مسئله، مشخصات رابط، معماری بلوک‌ها و معیارهای آزمون</div>
+<nav aria-label="ناوبری سایت">
+<a href="index.html">داشبورد اصلی</a><a href="hermes.html">Hermes</a><a href="components.html">قطعات جانبی</a><a href="training.html">آموزش</a><a class="active" href="axi-stream.html">AXI-Stream</a>
+</nav>
+</div></header>
+<main>
+<section class="intro">
+<h2>هدف این صفحه</h2>
+<p>در این بخش پروژه‌ای مستقل بر پایه رابط <b>AXI4-Stream</b> تعریف می‌کنیم. فعلاً این صفحه فقط محل ثبت مشخصات و تصمیم‌های اولیه است؛ هیچ فایل LiteX یا سخت‌افزاری تغییر نمی‌کند و هیچ چیزی روی FPGA پروگرام نخواهد شد.</p>
+</section>
+<form id="projectForm">
+<section class="card">
+<div class="section-head"><h2>۱. شناسنامه پروژه</h2><span class="tag">تعریف اولیه</span></div>
+<div class="grid">
+<div class="field"><label for="projectName">نام پروژه</label><input id="projectName" value="AXI-Stream Data Pipeline" required></div>
+<div class="field"><label for="projectStatus">وضعیت</label><select id="projectStatus"><option>در مرحله تعریف</option><option>در حال طراحی</option><option>در حال شبیه‌سازی</option><option>آماده پیاده‌سازی</option><option>آزمایش‌شده</option></select></div>
+</div>
+<div class="field"><label for="objective">هدف و مسئله‌ای که پروژه حل می‌کند</label><textarea id="objective" placeholder="مثلاً انتقال پیوسته داده بین دو بلوک با کنترل آماده‌بودن مقصد..."></textarea></div>
+<div class="field"><label for="scope">محدوده پروژه و خروجی مورد انتظار</label><textarea id="scope" placeholder="چه بلوک‌هایی ساخته می‌شوند و در پایان چه چیزی باید کار کند؟"></textarea></div>
+</section>
+<section class="card">
+<div class="section-head"><h2>۲. مشخصات رابط AXI-Stream</h2><span class="tag">پارامترهای قابل تعیین</span></div>
+<div class="grid">
+<div class="field"><label for="dataWidth">عرض داده TDATA (بیت)</label><select id="dataWidth"><option value="8">8</option><option value="16">16</option><option value="32" selected>32</option><option value="64">64</option><option value="128">128</option></select></div>
+<div class="field"><label for="clock">کلاک رابط (MHz)</label><input id="clock" type="number" min="1" placeholder="مثلاً 50"></div>
+<div class="field"><label for="source">بلوک فرستنده (Master)</label><input id="source" placeholder="نام بلوک تولیدکننده داده"></div>
+<div class="field"><label for="sink">بلوک گیرنده (Slave)</label><input id="sink" placeholder="نام بلوک مصرف‌کننده داده"></div>
+<div class="field"><label for="tkeep">استفاده از TKEEP</label><select id="tkeep"><option>بله</option><option>خیر</option></select></div>
+<div class="field"><label for="tlast">استفاده از TLAST</label><select id="tlast"><option>بله</option><option>خیر</option></select></div>
+<div class="field"><label for="tuser">استفاده از TUSER</label><select id="tuser"><option>خیر</option><option>بله</option></select></div>
+<div class="field"><label for="reset">نوع و قطبیت Reset</label><input id="reset" placeholder="مثلاً synchronous active-high"></div>
+</div>
+<div class="signal-grid">
+<div class="signal"><b>TVALID</b><span>فرستنده داده معتبر دارد.</span></div>
+<div class="signal"><b>TREADY</b><span>گیرنده آماده دریافت است.</span></div>
+<div class="signal"><b>Handshake</b><span>انتقال وقتی هر دو سیگنال ۱ باشند انجام می‌شود.</span></div>
+</div>
+</section>
+<section class="card">
+<div class="section-head"><h2>۳. معماری و رفتار مورد انتظار</h2></div>
+<div class="grid">
+<div class="field"><label for="architecture">بلوک‌های اصلی و مسیر داده</label><textarea id="architecture" placeholder="Source → FIFO → Processing → Sink"></textarea></div>
+<div class="field"><label for="backpressure">رفتار در Backpressure</label><textarea id="backpressure" placeholder="وقتی TREADY صفر شد، داده و TVALID چگونه حفظ شوند؟"></textarea></div>
+<div class="field"><label for="throughput">نرخ انتقال / Throughput هدف</label><input id="throughput" placeholder="مثلاً یک کلمه در هر سیکل در حالت پیوسته"></div>
+<div class="field"><label for="latency">تأخیر مجاز / Latency</label><input id="latency" placeholder="مثلاً حداکثر ۳ سیکل کلاک"></div>
+</div>
+</section>
+<section class="card">
+<div class="section-head"><h2>۴. برنامه شبیه‌سازی و معیار پذیرش</h2></div>
+<div class="field"><label for="tests">سناریوهای آزمون</label><textarea id="tests" placeholder="انتقال تک‌داده، انتقال پیوسته، توقف TREADY، TLAST، Reset حین انتقال، FIFO full/empty..."></textarea></div>
+<div class="field"><label for="acceptance">معیارهای قبولی</label><textarea id="acceptance" placeholder="بدون از دست‌رفتن یا تکرار داده، رعایت Handshake، نبود deadlock و ..."></textarea></div>
+<div class="field"><label for="notes">یادداشت‌ها و تصمیم‌های باز</label><textarea id="notes"></textarea></div>
+<div class="actions"><button type="submit">ذخیره مشخصات پروژه</button><button type="button" class="secondary" id="exportBtn">خروجی JSON</button><button type="button" class="danger" id="resetBtn">پاک‌کردن فرم</button></div>
+<p id="saveState" class="muted" aria-live="polite">اطلاعات فقط در حافظه همین مرورگر ذخیره می‌شود.</p>
+</section>
+</form>
+<footer>فضای مستندسازی AXI-Stream · داشبورد پروژه Tang Primer 25K</footer>
+</main>
+<script>
+const key='tang25k-axi-stream-project-v1';
+const ids=['projectName','projectStatus','objective','scope','dataWidth','clock','source','sink','tkeep','tlast','tuser','reset','architecture','backpressure','throughput','latency','tests','acceptance','notes'];
+const form=document.getElementById('projectForm');
+function values(){const out={updatedAt:new Date().toISOString()};ids.forEach(id=>out[id]=document.getElementById(id).value);return out}
+function save(){localStorage.setItem(key,JSON.stringify(values()));document.getElementById('saveState').textContent='مشخصات پروژه در همین مرورگر ذخیره شد.'}
+function load(){try{const v=JSON.parse(localStorage.getItem(key));if(v)ids.forEach(id=>{if(v[id]!==undefined)document.getElementById(id).value=v[id]})}catch(e){}}
+form.addEventListener('submit',e=>{e.preventDefault();save()});
+document.getElementById('exportBtn').addEventListener('click',()=>{const blob=new Blob([JSON.stringify(values(),null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='axi-stream-project-definition.json';a.click();URL.revokeObjectURL(url)});
+document.getElementById('resetBtn').addEventListener('click',()=>{if(confirm('تمام فیلدهای فرم پاک شوند؟')){localStorage.removeItem(key);form.reset();document.getElementById('projectName').value='AXI-Stream Data Pipeline';document.getElementById('dataWidth').value='32';document.getElementById('saveState').textContent='فرم پاک شد؛ هنوز ذخیره نشده است.'}});
+load();
+</script>
+</body></html>
