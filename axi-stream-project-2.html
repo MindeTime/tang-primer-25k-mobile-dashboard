@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="fa" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>پروژه دوم AXI-Stream | ارتباط بین دو بورد</title><style>
+<title>پروژه دوم | حداکثر نرخ انتقال بین دو بورد</title><style>
 :root{color-scheme:light;--navy:#123c52;--ink:#172b35;--muted:#637984;--line:#d9e3e8;--bg:#eef3f5;--teal:#16856d}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.9 Tahoma,Arial,sans-serif}
 header{background:var(--navy);color:#fff;padding:26px max(5vw,18px)}.wrap,main{max-width:950px;margin:auto}
@@ -14,14 +14,14 @@ dl{display:grid;grid-template-columns:155px 1fr;gap:9px 14px;margin:0}dt{font-we
 footer{text-align:center;color:var(--muted);font-size:.8rem;padding:12px}
 @media(max-width:600px){h1{font-size:1.4rem}dl{grid-template-columns:1fr;gap:2px}dd{margin-bottom:9px}}
 </style><script src="auth.js"></script></head>
-<body><header><div class="wrap"><div class="muted" style="color:#d6e4e9">صفحه تخصصی پروژه دوم</div><h1>پروژه دوم: ارتباط AXI-Stream بین دو بورد</h1><div>اندازه‌گیری و بهینه‌سازی حداکثر نرخ انتقال داده بین دو FPGA</div><nav><a href="index.html">داشبورد اصلی</a><a href="axi-stream.html">صفحه اصلی AXI-Stream</a></nav></div></header>
+<body><header><div class="wrap"><div class="muted" style="color:#d6e4e9">صفحه تخصصی پروژه دوم</div><h1>پروژه دوم: حداکثر نرخ انتقال داده بین دو بورد</h1><div>بررسی و مقایسه روش‌های ارتباطی فیزیکی بین دو Tang Primer 25K</div><nav><a href="index.html">داشبورد اصلی</a><a href="axi-stream.html">صفحه اصلی AXI-Stream</a></nav></div></header>
 <main><a class="back" href="axi-stream.html">← بازگشت به فهرست پروژه‌های AXI-Stream</a>
 <section class="card project"><h2>تعریف و مشخصات پروژه</h2><dl>
 <dt>بستر سخت‌افزاری</dt><dd>دو بورد Sipeed Tang Primer 25K</dd>
-<dt>اتصال فیزیکی</dt><dd>اتصال دو بورد به یکدیگر با استفاده از دو سیم؛ مسیر ارسال و دریافت بین پایه‌های ورودی و خروجی دو بورد برقرار می‌شود.</dd>
-<dt>ساختار بورد فرستنده</dt><dd>پیاده‌سازی یک هسته فرستنده AXI-Stream روی بورد اول</dd>
-<dt>ساختار بورد گیرنده</dt><dd>پیاده‌سازی یک هسته گیرنده AXI-Stream روی بورد دوم</dd>
-<dt>هدف پروژه</dt><dd>آزمایش و بهینه‌سازی ارتباط داده بین دو بورد برای رسیدن به حداکثر نرخ انتقال داده ممکن</dd>
-</dl><div class="goal"><b>هدف اصلی:</b> اندازه‌گیری نرخ انتقال واقعی بین دو FPGA و بهینه‌سازی طراحی فرستنده، گیرنده و رابط فیزیکی برای دستیابی به بیشترین پهنای باند پایدار.</div></section>
-<section class="card"><h2>دامنه فعلی پروژه</h2><p>در این مرحله تمرکز بر ارتباط فیزیکی دو بورد است؛ یک بورد داده را از طریق هسته AXI-Stream ارسال می‌کند و بورد دوم داده را از طریق هسته گیرنده دریافت می‌کند. جزئیات پایه‌ها، مشخصات الکتریکی اتصال، فرکانس و روش آزمون در مراحل بعدی و پس از بررسی فنی تعیین خواهند شد.</p></section>
+<dt>اتصال فیزیکی</dt><dd>اتصال پایه‌های خروجی بورد فرستنده به پایه‌های ورودی بورد گیرنده با سیم؛ مسیرهای لازم برای ارسال و در صورت نیاز بازخورد/Handshake نیز بررسی می‌شوند.</dd>
+<dt>روش‌های مورد بررسی</dt><dd>تمام رابط‌ها و روش‌های انتقال داده‌ای که با امکانات، پایه‌های قابل دسترس و مشخصات الکتریکی دو بورد قابل اجرا باشند؛ از جمله GPIO موازی، LVDS و گزینه‌های پرسرعت سازگار</dd>
+<dt>معماری داخلی</dt><dd>طراحی بلوک‌های تولیدکننده، ارسال‌کننده، دریافت‌کننده و سنجش داده روی دو FPGA؛ AXI-Stream یکی از گزینه‌های داخلی است، نه الزام پروژه</dd>
+<dt>هدف پروژه</dt><dd>مقایسه روش‌ها و دستیابی به بیشترین نرخ انتقال واقعی و پایدار بین دو بورد</dd>
+</dl><div class="goal"><b>هدف اصلی:</b> تعیین سریع‌ترین رابط فیزیکی قابل پیاده‌سازی بین دو Tang Primer 25K و ثبت نتایج، شرایط آزمون و محدودیت‌ها.</div></section>
+<section class="card"><h2>روش اجرای پروژه</h2><p>روش‌های ارتباطی سازگار با دو بورد به‌صورت مرحله‌ای طراحی و آزمایش می‌شوند. برای هر روش، نرخ انتقال خام و مفید، تعداد خطوط، فرکانس، صحت داده، خطا، پایداری و محدودیت‌های الکتریکی ثبت می‌شود. نتایج فقط بر اساس آزمایش واقعی گزارش خواهند شد.</p></section><section class="card"><h2>گزارش فعالیت‌ها و نتایج</h2><p class="muted">فعالیت‌ها و نتایج این پروژه با تاریخ شمسی در این بخش ثبت می‌شوند.</p><div style="border-right:3px solid var(--teal);padding:2px 14px;margin-top:14px"><b>۱۶ آبان ۱۴۰۵</b><p><b>تعریف پروژه انجام شد.</b></p><p><b>نتیجه:</b> هدف پروژه به یافتن سریع‌ترین روش انتقال داده بین دو بورد تغییر یافت؛ AXI-Stream یکی از گزینه‌های معماری داخلی است و روش‌های فیزیکی سازگار مرحله‌به‌مرحله مقایسه می‌شوند.</p></div></section>
 <footer>صفحه تخصصی پروژه دوم AXI-Stream</footer></main></body></html>
