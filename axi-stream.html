@@ -26,6 +26,8 @@ main{padding:24px 18px 48px}
 .goal{background:#e5f3ef;border-radius:10px;padding:14px 16px;margin-top:16px}
 footer{text-align:center;color:var(--muted);font-size:.8rem;padding:12px}
 @media(max-width:600px){h1{font-size:1.45rem}.details{grid-template-columns:1fr;gap:2px}.details dd{margin-bottom:9px}}
+
+.site-nav{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}.site-nav a{display:inline-block;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.48);border-radius:999px;padding:5px 14px;font-size:.88rem}.site-nav a:hover,.site-nav a.active{background:rgba(255,255,255,.18);border-color:#fff}
 </style>
 <script src="auth.js"></script>
 </head>
@@ -34,9 +36,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;padding:12px}
 <div class="muted">فضای ثبت و بررسی روش‌های ارتباط پرسرعت FPGA</div>
 <h1>توسعه ارتباط پرسرعت FPGA</h1>
 <div>تعریف پروژه‌ها و ثبت مشخصات مورد توافق</div>
-<nav aria-label="ناوبری سایت">
-<a href="index.html">داشبورد اصلی</a><a href="hermes.html">Hermes</a><a href="components.html">قطعات جانبی</a><a href="training.html">آموزش</a><a class="active" href="axi-stream.html">توسعه ارتباط پرسرعت FPGA</a>
-</nav>
+<nav class="site-nav" aria-label="ناوبری اصلی"><a href="index.html">داشبورد اصلی</a><a href="hermes.html">Hermes</a><a href="components.html">قطعات جانبی</a><a href="training.html">آموزش</a><a href="axi-stream.html" class="active">توسعه ارتباط پرسرعت FPGA</a></nav>
 </div></header>
 <main>
 <section class="card project">
