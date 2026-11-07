@@ -100,11 +100,15 @@ html,body{background:#0b121a!important;background-image:none!important}
  function spawnCollisionPair(){
   const id=++pairSerial,targetX=w*(.42+Math.random()*.16),targetY=h*(.25+Math.random()*.48);
   const speed=2.15+Math.random()*.45;
-  for(const fromLeft of [true,false]){
+  const starts=[true,false].map(fromLeft=>{
    const sx=fromLeft?-95:w+95,sy=h*(.12+Math.random()*.68);
-   const dx=targetX-sx,dy=targetY-sy,dist=Math.hypot(dx,dy);
-   const frames=dist/speed;
-   shooters.push({x:sx,y:sy,vx:dx/frames,vy:dy/frames,length:85+Math.random()*35,
+   const dx=targetX-sx,dy=targetY-sy;
+   return {sx,sy,dx,dy,dist:Math.hypot(dx,dy)};
+  });
+  // Both trajectories use the same travel time, so their tips reach the exact same point on the same frame.
+  const frames=Math.max(...starts.map(p=>p.dist))/speed;
+  for(const p of starts){
+   shooters.push({x:p.sx,y:p.sy,vx:p.dx/frames,vy:p.dy/frames,length:85+Math.random()*35,
     life:0,max:Math.ceil(frames)+5,width:2.1,pairId:id,targetX,targetY});
   }
  }
@@ -144,12 +148,16 @@ html,body{background:#0b121a!important;background-image:none!important}
    ctx.beginPath();ctx.arc(q.x,q.y,2.2,0,Math.PI*2);
    ctx.fillStyle='rgba(255,255,255,'+fade+')';ctx.shadowBlur=18;ctx.fill();
    q.x+=q.vx;q.y+=q.vy;q.life++;
-   if(q.pairId && Math.hypot(q.x-q.targetX,q.y-q.targetY)<Math.max(Math.abs(q.vx),Math.abs(q.vy))*2+2){
-    const id=q.pairId;makeBurst(q.targetX,q.targetY);
-    for(let j=shooters.length-1;j>=0;j--)if(shooters[j].pairId===id)shooters.splice(j,1);
-    continue;
-   }
    if((q.vx>0&&q.x-q.length>w+30)||(q.vx<0&&q.x+q.length<-30)||q.y>h+160) shooters.splice(i,1);
+  }
+  // Detonate only after BOTH members of a pair have reached the shared impact point.
+  const pairIds=[...new Set(shooters.filter(q=>q.pairId).map(q=>q.pairId))];
+  for(const id of pairIds){
+   const pair=shooters.filter(q=>q.pairId===id);
+   if(pair.length===2 && pair.every(q=>Math.hypot(q.x-q.targetX,q.y-q.targetY)<2.5)){
+    makeBurst(pair[0].targetX,pair[0].targetY);
+    shooters=shooters.filter(q=>q.pairId!==id);
+   }
   }
   for(let i=bursts.length-1;i>=0;i--){
    const p=bursts[i],fade=1-p.life/p.max;
